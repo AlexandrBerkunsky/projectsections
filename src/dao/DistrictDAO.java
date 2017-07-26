@@ -1,0 +1,31 @@
+package dao;
+
+import tables.District;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+@Stateless
+public class DistrictDAO {
+    @PersistenceContext
+    EntityManager em;
+
+    public List<District> findAll(){
+        return em.createQuery("select d from District d").getResultList();
+    }
+
+    public void add(District district) {
+        em.persist(district);
+    }
+
+    public void delete(int id) {
+        District district = em.find(District.class, id);
+        em.remove(district);
+    }
+
+    public void save(District district) {
+        em.merge(district);
+    }
+}

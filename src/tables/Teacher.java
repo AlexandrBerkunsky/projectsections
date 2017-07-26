@@ -1,13 +1,11 @@
 package tables;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Teacher {
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
 
@@ -94,5 +92,16 @@ public class Teacher {
 
     public void setExpierence(String expierence) {
         this.expierence = expierence;
+    }
+
+    @OneToMany(mappedBy = "teacher")
+    private Collection<Section> sections;
+
+    public Collection<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(Collection<Section> sections) {
+        this.sections = sections;
     }
 }
