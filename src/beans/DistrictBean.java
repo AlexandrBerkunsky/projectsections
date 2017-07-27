@@ -18,10 +18,14 @@ public class DistrictBean implements Serializable {
     @EJB
     DistrictDAO districtDAO;
 
-    private Boolean edit;
+    private boolean edit = false;
+
+    public boolean isEdit() {
+        return edit;
+    }
 
     @Inject
-    CommonUtils utils;
+    CommonUtils util;
 
     private District district = new District();
 
@@ -34,7 +38,24 @@ public class DistrictBean implements Serializable {
     }
 
     public List<District> getDistricts() {
-        //TODO не понятно, скопировали
         return districtDAO.findAll();
+    }
+
+    public void delete(int id) {
+        districtDAO.delete(id);
+
+        util.redirectWithGet();
+    }
+
+    public void add() {
+        districtDAO.add(district);
+        district = new District();
+
+        util.redirectWithGet();
+    }
+
+    public String showSchools(District d) {
+        district = d;
+        return "schoolsbydistrict";
     }
 }

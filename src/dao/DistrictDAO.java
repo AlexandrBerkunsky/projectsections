@@ -13,7 +13,7 @@ public class DistrictDAO {
     EntityManager em;
 
     public List<District> findAll(){
-        return em.createQuery("select d from District d").getResultList();
+        return em.createNamedQuery("District.FindAll").getResultList();
     }
 
     public void add(District district) {

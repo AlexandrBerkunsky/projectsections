@@ -9,6 +9,41 @@ public class School {
     @Id
     private int id;
 
+
+
+    @Basic
+    private String fullname;
+
+    @Basic
+    private String address;
+    @Basic
+    private String email;
+
+    @Basic
+    private String edrpou;
+
+    @Basic
+    @Column(length = 13)
+    private String shortname;
+
+    @Basic
+    private String name;
+
+    @Basic
+    private String phone;
+
+    @Basic
+    private int countcabinets;
+
+    @Basic
+    private String director;
+
+    @Basic
+    private String login;
+
+    @Basic
+    private String password;
+
     public int getId() {
         return id;
     }
@@ -16,9 +51,6 @@ public class School {
     public void setId(int id) {
         this.id = id;
     }
-
-    @Basic
-    private String fullname;
 
     public String getFullname() {
         return fullname;
@@ -28,9 +60,6 @@ public class School {
         this.fullname = fullname;
     }
 
-    @Basic
-    private String address;
-
     public String getAddress() {
         return address;
     }
@@ -38,9 +67,6 @@ public class School {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    @Basic
-    private String email;
 
     public String getEmail() {
         return email;
@@ -50,9 +76,6 @@ public class School {
         this.email = email;
     }
 
-    @Basic
-    private String edrpou;
-
     public String getEdrpou() {
         return edrpou;
     }
@@ -61,9 +84,6 @@ public class School {
         this.edrpou = edrpou;
     }
 
-    @Basic
-    @Column(length = 13)
-    private String shortname;
 
     public String getShortname() {
         return shortname;
@@ -73,10 +93,6 @@ public class School {
         this.shortname = shortname;
     }
 
-
-    @Basic
-    private String name;
-
     public String getName() {
         return name;
     }
@@ -84,9 +100,6 @@ public class School {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Basic
-    private String phone;
 
     public String getPhone() {
         return phone;
@@ -96,9 +109,6 @@ public class School {
         this.phone = phone;
     }
 
-    @Basic
-    private int countcabinets;
-
     public int getCountcabinets() {
         return countcabinets;
     }
@@ -107,19 +117,14 @@ public class School {
         this.countcabinets = countcabinets;
     }
 
-    @Basic
-    private String director;
 
     public String getDirector() {
         return director;
     }
-
     public void setDirector(String director) {
         this.director = director;
     }
 
-    @Basic
-    private String login;
 
     public String getLogin() {
         return login;
@@ -128,9 +133,6 @@ public class School {
     public void setLogin(String login) {
         this.login = login;
     }
-
-    @Basic
-    private String password;
 
     public String getPassword() {
         return password;
