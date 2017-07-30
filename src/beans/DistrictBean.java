@@ -58,4 +58,26 @@ public class DistrictBean implements Serializable {
         district = d;
         return "schoolsbydistrict";
     }
+
+    public void editDistrict(District district) {
+        this.district = district;
+        edit = true;
+
+        util.redirectWithGet();
+    }
+
+    public void saveEdit() {
+        districtDAO.save(district);
+        this.district = new District();
+        edit = false;
+
+        util.redirectWithGet();
+    }
+
+    public void cancelEdit() {
+        this.district = new District();
+        edit = false;
+
+        util.redirectWithGet();
+    }
 }

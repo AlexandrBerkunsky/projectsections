@@ -21,6 +21,9 @@
                 <p:column headerText="Школи" style="width: 100px; text-align: center">
                     <p:commandButton action="#{districtBean.showSchools(district)}" value="Ш" ajax="false"/>
                 </p:column>
+                <p:column headerText="Правка" style="width: 75px; text-align: center">
+                    <p:commandButton actionListener="#{districtBean.editDistrict(district)}" icon="ui-icon-pencil"/>
+                </p:column>
                 <p:column headerText="Удалить" style="width: 75px; text-align: center">
                     <p:commandButton actionListener="#{districtBean.delete(district.id)}" icon="ui-icon-trash">
                         <p:confirm header="Подтверждение удаления" message="Вы уверены?" icon="ui-icon-alert"/>
@@ -36,6 +39,7 @@
 
         </h:form>
     </h:panelGroup>
+
     <h:panelGroup rendered="#{!districtBean.edit}">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
@@ -44,6 +48,17 @@
                 <p:commandButton action="#{districtBean.add}" value="Створити новий"/>
             </h:panelGrid>
 
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup rendered="#{districtBean.edit}">
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel value="Район" for="nameedit"/>
+                <p:inputText value="#{districtBean.district.name}" id="nameedit" required="true"/>
+            </h:panelGrid>
+            <p:commandButton action="#{districtBean.saveEdit}" icon="ui-icon-check" value="Зберегти" ajax="false"/>
+            <p:commandButton action="#{districtBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати" ajax="false"/>
         </h:form>
     </h:panelGroup>
 </h:body>
