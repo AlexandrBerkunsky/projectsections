@@ -24,16 +24,16 @@
                 <p:column headerText="Правка" style="width: 75px; text-align: center">
                     <p:commandButton actionListener="#{districtBean.editDistrict(district)}" icon="ui-icon-pencil"/>
                 </p:column>
-                <p:column headerText="Удалить" style="width: 75px; text-align: center">
+                <p:column headerText="Видалити" style="width: 75px; text-align: center">
                     <p:commandButton actionListener="#{districtBean.delete(district.id)}" icon="ui-icon-trash">
-                        <p:confirm header="Подтверждение удаления" message="Вы уверены?" icon="ui-icon-alert"/>
+                        <p:confirm header="Підтвердження видалення" message="Вы впевнені?" icon="ui-icon-alert"/>
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
 
             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
             </p:confirmDialog>
 
 
