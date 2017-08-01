@@ -28,4 +28,8 @@ public class DistrictDAO {
     public void save(District district) {
         em.merge(district);
     }
+
+    public District find(int id) {
+        return em.find(District.class, id);
+    }
 }

@@ -11,20 +11,58 @@
         <title>#{districtBean.district.name} район</title>
     </h:head>
     <h:body>
-        <p:dataTable var="school" value="#{districtBean.district.schools}">
-            <p:column headerText="Школа">
-                <h:outputText value="#{school.shortname}"/>
-            </p:column>
-            <p:column headerText="Телефон">
-                <h:outputText value="#{school.phone}"/>
-            </p:column>
-            <p:column headerText="Електронна пошта">
-                <h:outputText value="#{school.email}"/>
-            </p:column>
-            <p:column headerText="Директор">
-                <h:outputText value="#{school.director}"/>
-            </p:column>
-        </p:dataTable>
+        <h:form>
+            <p:commandButton action="#{schoolBean.showadd}" value="Створити школу" ajax="false"/>
+
+            <h:panelGroup rendered="#{!schoolBean.edit and schoolBean.schooladd}">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Коротка назва школи" for="shortnameschool"/>
+                    <p:inputText value="#{schoolBean.school.shortname}" id="shortnameschool" required="true"/>
+                    <p:outputLabel value="Телефон" for="phoneschool"/>
+                    <p:inputText value="#{schoolBean.school.phone}" id="phoneschool" required="true"/>
+                    <p:outputLabel value="Електронна пошта" for="mailschool"/>
+                    <p:inputText value="#{schoolBean.school.email}" id="mailschool" required="true"/>
+                    <p:outputLabel value="ПІБ Директора" for="directorschool"/>
+                    <p:inputText value="#{schoolBean.school.director}" id="directorschool" required="true"/>
+                    <p:outputLabel value="Адреса школи" for="addressschool"/>
+                    <p:inputText value="#{schoolBean.school.address}" id="addressschool" required="true"/>
+                    <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschool"/>
+                    <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschool" required="true"/>
+                    <p:outputLabel value="ЄДРПОУ" for="edrpouschool"/>
+                    <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschool" required="true"/>
+                    <p:outputLabel value="Назва школи" for="nameschool"/>
+                    <p:inputText value="#{schoolBean.school.name}" id="nameschool" required="true"/>
+                    <p:outputLabel value="Повна назва школи" for="fullnameschool"/>
+                    <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschool" required="true"/>
+                    <p:outputLabel value="Login школи" for="loginschool"/>
+                    <p:inputText value="#{schoolBean.school.login}" id="loginschool" required="true"/>
+                    <p:outputLabel value="Пароль школи" for="passwordschool"/>
+                    <p:inputText value="#{schoolBean.school.password}" id="passwordschool" required="true"/>
+                    <p:commandButton action="#{schoolBean.add(districtBean)}" value="Створити нову" ajax="false"/>
+                    <p:commandButton action="#{schoolBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+                </h:panelGrid>
+
+            </h:panelGroup>
+
+            <p:dataTable var="school" value="#{districtBean.district.schools}">
+                <p:column headerText="Школа">
+                    <h:outputText value="#{school.shortname}"/>
+                </p:column>
+                <p:column headerText="Телефон">
+                    <h:outputText value="#{school.phone}"/>
+                </p:column>
+                <p:column headerText="Електронна пошта">
+                    <h:outputText value="#{school.email}"/>
+                </p:column>
+                <p:column headerText="Директор">
+                    <h:outputText value="#{school.director}"/>
+                </p:column>
+            </p:dataTable>
+
+
+
+        </h:form>
     </h:body>
 </f:view>
 </html>
