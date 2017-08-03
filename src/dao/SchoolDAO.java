@@ -18,4 +18,8 @@ public class SchoolDAO {
     public void add(School school) {
         em.persist(school);
     }
+
+    public void save(School school) {
+        em.merge(school);
+    }
 }

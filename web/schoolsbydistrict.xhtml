@@ -45,6 +45,39 @@
 
             </h:panelGroup>
 
+            <h:panelGroup rendered="#{schoolBean.edit and !schoolBean.schooladd}">
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="1Коротка назва школи" for="shortnameedit"/>
+                        <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="true"/>
+                        <p:outputLabel value="Телефон" for="phoneschooledit"/>
+                        <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="true"/>
+                        <p:outputLabel value="Електронна пошта" for="mailschooledit"/>
+                        <p:inputText value="#{schoolBean.school.email}" id="mailschooledit" required="true"/>
+                        <p:outputLabel value="ПІБ Директора" for="directorschooledit"/>
+                        <p:inputText value="#{schoolBean.school.director}" id="directorschooledit" required="true"/>
+                        <p:outputLabel value="Адреса школи" for="addressschooledit"/>
+                        <p:inputText value="#{schoolBean.school.address}" id="addressschooledit" required="true"/>
+                        <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschooledit"/>
+                        <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschooledit" required="true"/>
+                        <p:outputLabel value="ЄДРПОУ" for="edrpouschooledit"/>
+                        <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschooledit" required="true"/>
+                        <p:outputLabel value="Назва школи" for="nameschooledit"/>
+                        <p:inputText value="#{schoolBean.school.name}" id="nameschooledit" required="true"/>
+                        <p:outputLabel value="Повна назва школи" for="fullnameschooledit"/>
+                        <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschooledit" required="true"/>
+                        <p:outputLabel value="Login школи" for="loginschooledit"/>
+                        <p:inputText value="#{schoolBean.school.login}" id="loginschooledit" required="true"/>
+                        <p:outputLabel value="Пароль школи" for="passwordschooledit"/>
+                        <p:inputText value="#{schoolBean.school.password}" id="passwordschooledit" required="true"/>
+                    </h:panelGrid>
+                    <p:commandButton action="#{schoolBean.saveEdit}" icon="ui-icon-check" value="Зберегти"
+                                     ajax="false"/>
+                    <p:commandButton action="#{schoolBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати"
+                                     ajax="false"/>
+                </h:form>
+            </h:panelGroup>
+
             <p:dataTable var="school" value="#{districtBean.district.schools}">
                 <p:column headerText="Школа">
                     <h:outputText value="#{school.shortname}"/>
@@ -58,8 +91,10 @@
                 <p:column headerText="Директор">
                     <h:outputText value="#{school.director}"/>
                 </p:column>
+                <p:column headerText="Правка" style="width: 75px; text-align: center">
+                    <p:commandButton actionListener="#{schoolBean.editSchool(school)}" icon="ui-icon-pencil"/>
+                </p:column>
             </p:dataTable>
-
 
 
         </h:form>

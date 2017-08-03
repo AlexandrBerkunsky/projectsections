@@ -70,9 +70,26 @@ public class SchoolBean implements Serializable {
         util.redirectWithGet();
     }
 
+    public void saveEdit() {
+        schoolDAO.save(school);
+        this.school = new School();
+        edit = false;
+
+        util.redirectWithGet();
+    }
+
     public void cancelEdit() {
-        school = new School();
+        this.school = new School();
         schooladd = false;
+        edit = false;
+
+
+        util.redirectWithGet();
+    }
+
+    public void editSchool(School school) {
+        this.school = school;
+        edit = true;
 
         util.redirectWithGet();
     }
