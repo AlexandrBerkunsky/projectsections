@@ -166,4 +166,53 @@ public class School {
     public void setSections(Collection<Section> sections) {
         this.sections = sections;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof School)) return false;
+
+        School school = (School) o;
+
+        if (getId() != school.getId()) return false;
+        if (getCountcabinets() != school.getCountcabinets()) return false;
+        if (getFullname() != null ? !getFullname().equals(school.getFullname()) : school.getFullname() != null)
+            return false;
+        if (getAddress() != null ? !getAddress().equals(school.getAddress()) : school.getAddress() != null)
+            return false;
+        if (getEmail() != null ? !getEmail().equals(school.getEmail()) : school.getEmail() != null) return false;
+        if (getEdrpou() != null ? !getEdrpou().equals(school.getEdrpou()) : school.getEdrpou() != null) return false;
+        if (getShortname() != null ? !getShortname().equals(school.getShortname()) : school.getShortname() != null)
+            return false;
+        if (getName() != null ? !getName().equals(school.getName()) : school.getName() != null) return false;
+        if (getPhone() != null ? !getPhone().equals(school.getPhone()) : school.getPhone() != null) return false;
+        if (getDirector() != null ? !getDirector().equals(school.getDirector()) : school.getDirector() != null)
+            return false;
+        if (getLogin() != null ? !getLogin().equals(school.getLogin()) : school.getLogin() != null) return false;
+        if (getPassword() != null ? !getPassword().equals(school.getPassword()) : school.getPassword() != null)
+            return false;
+        if (getDistrict() != null ? !getDistrict().equals(school.getDistrict()) : school.getDistrict() != null)
+            return false;
+        return getSections() != null ? getSections().equals(school.getSections()) : school.getSections() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + (getFullname() != null ? getFullname().hashCode() : 0);
+        result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        result = 31 * result + (getEdrpou() != null ? getEdrpou().hashCode() : 0);
+        result = 31 * result + (getShortname() != null ? getShortname().hashCode() : 0);
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
+        result = 31 * result + getCountcabinets();
+        result = 31 * result + (getDirector() != null ? getDirector().hashCode() : 0);
+        result = 31 * result + (getLogin() != null ? getLogin().hashCode() : 0);
+        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
+        result = 31 * result + (getDistrict() != null ? getDistrict().hashCode() : 0);
+        result = 31 * result + (getSections() != null ? getSections().hashCode() : 0);
+        return result;
+    }
 }

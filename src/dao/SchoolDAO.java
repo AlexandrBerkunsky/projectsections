@@ -1,5 +1,7 @@
 package dao;
 
+import beans.DistrictBean;
+import tables.District;
 import tables.School;
 
 import javax.ejb.Stateless;
@@ -21,5 +23,17 @@ public class SchoolDAO {
 
     public void save(School school) {
         em.merge(school);
+    }
+
+    public void delete(int id) {
+        School school = em.find(School.class, id);
+        System.out.println("дошел");
+        em.remove(school);
+
+        System.out.println("прошел");
+    }
+
+    public School find(int id) {
+        return em.find(School.class, id);
     }
 }

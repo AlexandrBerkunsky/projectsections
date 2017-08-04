@@ -48,7 +48,7 @@
             <h:panelGroup rendered="#{schoolBean.edit and !schoolBean.schooladd}">
                 <h:form>
                     <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel value="1Коротка назва школи" for="shortnameedit"/>
+                        <p:outputLabel value="Коротка назва школи" for="shortnameedit"/>
                         <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="true"/>
                         <p:outputLabel value="Телефон" for="phoneschooledit"/>
                         <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="true"/>
@@ -78,7 +78,7 @@
                 </h:form>
             </h:panelGroup>
 
-            <p:dataTable var="school" value="#{districtBean.district.schools}">
+            <p:dataTable var="school" value="#{districtBean.district.schools}" id="schools">
                 <p:column headerText="Школа">
                     <h:outputText value="#{school.shortname}"/>
                 </p:column>
@@ -94,8 +94,17 @@
                 <p:column headerText="Правка" style="width: 75px; text-align: center">
                     <p:commandButton actionListener="#{schoolBean.editSchool(school)}" icon="ui-icon-pencil"/>
                 </p:column>
+                <p:column headerText="Видалити" style="width: 75px; text-align: center">
+                    <p:commandButton actionListener="#{schoolBean.delete(school, districtBean)}" icon="ui-icon-trash" update="schools">
+                        <p:confirm header="Підтвердження видалення" message="Вы впевнені?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                </p:column>
             </p:dataTable>
 
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+            </p:confirmDialog>
 
         </h:form>
     </h:body>

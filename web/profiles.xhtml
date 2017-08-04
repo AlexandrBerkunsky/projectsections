@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Профілі</title>
+    </h:head>
+    <h:body>
+
+        <h:panelGroup rendered="#{not empty profileBean.profiles}">
+            <h:form>
+                <p:dataTable var="profile" value="#{profileBean.profiles}" resizableColumns="true">
+                    <p:column headerText="Профілі">
+                        <h:outputText value="#{profile.name}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </h:panelGroup>
+
+    </h:body>
+</f:view>
+</html>

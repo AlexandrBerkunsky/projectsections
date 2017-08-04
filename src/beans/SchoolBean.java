@@ -93,4 +93,13 @@ public class SchoolBean implements Serializable {
 
         util.redirectWithGet();
     }
+
+    public void delete(School school,  DistrictBean districtBean) {
+        schoolDAO.delete(school.getId());
+//        districtBean.setDistrict(districtDAO.find(districtBean.getDistrict().getId()));
+        districtBean.getDistrict().getSchools().remove(school);
+        districtDAO.save(districtBean.getDistrict());
+
+        util.redirectWithGet();
+    }
 }
