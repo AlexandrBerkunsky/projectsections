@@ -11,18 +11,41 @@
         <title>Профілі</title>
     </h:head>
     <h:body>
+        <h:form>
+            <p:commandButton action="#{profileBean.showadd}" value="Створити профіль" ajax="false"/>
 
-        <h:panelGroup rendered="#{not empty profileBean.profiles}">
-            <h:form>
+            <h:panelGroup rendered="#{!profileBean.edit and profileBean.profileadd}">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Назва профіля" for="profilename"/>
+                    <p:inputText value="#{profileBean.profile.name}" id="profilename" required="true"/>
+
+                    <p:commandButton action="#{profileBean.saveEdit()}" value="Створити новий" ajax="false"/>
+                    <p:commandButton action="#{profileBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+                </h:panelGrid>
+
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{not empty profileBean.profiles}">
+
                 <p:dataTable var="profile" value="#{profileBean.profiles}" resizableColumns="true">
                     <p:column headerText="Профілі">
                         <h:outputText value="#{profile.name}"/>
                     </p:column>
+                    <p:column headerText="Видалити" style="width: 75px; text-align: center">
+                        <p:commandButton actionListener="#{profileBean.delete(profile.id)}" icon="ui-icon-trash">
+                            <p:confirm header="Підтвердження видалення" message="Вы впевнені? Всі секції будуть видалені" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </p:column>
                 </p:dataTable>
-            </h:form>
 
-        </h:panelGroup>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                </p:confirmDialog>
 
+            </h:panelGroup>
+        </h:form>
     </h:body>
 </f:view>
 </html>

@@ -19,6 +19,12 @@ public class ProfileBean implements Serializable {
 
     private boolean edit = false;
 
+    public boolean isProfileadd() {
+        return profileadd;
+    }
+
+    private boolean profileadd = false;
+
     public boolean isEdit() {
         return edit;
     }
@@ -40,5 +46,31 @@ public class ProfileBean implements Serializable {
         return profileDAO.findAll();
     }
 
+    public void showadd() {
+        profileadd = true;
 
+        util.redirectWithGet();
+    }
+
+    public void saveEdit() {
+        profileDAO.save(profile);
+        this.profile = new Profile();
+        edit = false;
+
+        util.redirectWithGet();
+    }
+
+    public void cancelEdit() {
+        this.profile = new Profile();
+        profileadd = false;
+        edit = false;
+
+        util.redirectWithGet();
+    }
+
+    public void delete(int id) {
+        profileDAO.delete(id);
+
+        util.redirectWithGet();
+    }
 }
