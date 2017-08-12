@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Учителя</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <p:commandButton action="#{teacherBean.showadd}" value="Додати вчителя" ajax="false"/>
+
+        <h:panelGroup rendered="#{!teacherBean.edit and teacherBean.teacheradd}">
+            <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Прізвище" for="surnameteacher"/>
+                <p:inputText value="#{teacherBean.teacher.surname}" id="surnameteacher" required="true"/>
+                <p:outputLabel value="Ім'я" for="nameteacher"/>
+                <p:inputText value="#{teacherBean.teacher.name}" id="nameteacher" required="true"/>
+                <p:outputLabel value="По батькові" for="name2teacher"/>
+                <p:inputText value="#{teacherBean.teacher.name2}" id="name2teacher" required="true"/>
+                <p:outputLabel value="Освіта" for="educationteacher"/>
+                <p:inputText value="#{teacherBean.teacher.education}" id="educationteacher" required="true"/>
+                <p:outputLabel value="Спеціальність" for="specialtyteacher"/>
+                <p:inputText value="#{teacherBean.teacher.specialty}" id="specialtyteacher" required="true"/>
+                <p:outputLabel value="Досвід роботи" for="expierenceteacher"/>
+                <p:inputText value="#{teacherBean.teacher.expierence}" id="expierenceteacher" required="true"/>
+                <p:commandButton action="#{teacherBean.add()}" value="Додати нового вчителя" ajax="false"/>
+                <p:commandButton action="#{teacherBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+            </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+
+         <h:panelGroup rendered="#{teacherBean.edit and !teacherBean.teacheradd}">
+            <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Прізвище" for="editsurnameteacher"/>
+                <p:inputText value="#{teacherBean.teacher.surname}" id="editsurnameteacher" required="true"/>
+                <p:outputLabel value="Ім'я" for="editnameteacher"/>
+                <p:inputText value="#{teacherBean.teacher.name}" id="editnameteacher" required="true"/>
+                <p:outputLabel value="По батькові" for="editname2teacher"/>
+                <p:inputText value="#{teacherBean.teacher.name2}" id="editname2teacher" required="true"/>
+                <p:outputLabel value="Освіта" for="editeducationteacher"/>
+                <p:inputText value="#{teacherBean.teacher.education}" id="editeducationteacher" required="true"/>
+                <p:outputLabel value="Спеціальність" for="editspecialtyteacher"/>
+                <p:inputText value="#{teacherBean.teacher.specialty}" id="editspecialtyteacher" required="true"/>
+                <p:outputLabel value="Досвід роботи" for="editexpierenceteacher"/>
+                <p:inputText value="#{teacherBean.teacher.expierence}" id="editexpierenceteacher" required="true"/>
+                <p:commandButton action="#{teacherBean.saveEdit()}" value="Зберегти" ajax="false"/>
+                <p:commandButton action="#{teacherBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+            </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{not empty teacherBean.teachers}">
+            <h:form>
+                <p:dataTable var="teacher" value="#{teacherBean.teachers}" resizableColumns="true">
+                    <p:column headerText="Прізвище">
+                        <h:outputText value="#{teacher.surname}"/>
+                    </p:column>
+                    <p:column headerText="Ім'я">
+                        <h:outputText value="#{teacher.name}"/>
+                    </p:column>
+                    <p:column headerText="По батькові">
+                        <h:outputText value="#{teacher.name2}"/>
+                    </p:column>
+                    <p:column headerText="Освіта">
+                        <h:outputText value="#{teacher.education}"/>
+                    </p:column>
+                    <p:column headerText="Спеціальність">
+                        <h:outputText value="#{teacher.specialty}"/>
+                    </p:column>
+                    <p:column headerText="Досвід">
+                        <h:outputText value="#{teacher.expierence}"/>
+                    </p:column>
+                    <p:column headerText="Правка" style="width: 75px; text-align: center">
+                        <p:commandButton actionListener="#{teacherBean.editTeacher(teacher)}" icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Видалити" style="width: 75px; text-align: center">
+                        <p:commandButton actionListener="#{teacherBean.delete(teacher.id)}" icon="ui-icon-trash">
+                            <p:confirm header="Підтвердження видалення" message="Вы впевнені?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                </p:confirmDialog>
+
+            </h:form>
+        </h:panelGroup>
+        </h:form>
+    </h:body>
+</f:view>
+</html>

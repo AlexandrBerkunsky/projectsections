@@ -67,7 +67,6 @@ public class ProfileBean implements Serializable {
     }
 
     public void editProfile(Profile profile) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         this.profile = profile;
         edit = true;
 

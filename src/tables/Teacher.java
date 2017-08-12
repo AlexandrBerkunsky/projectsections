@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Teacher.FindAll", query = "select t from Teacher t")
+})
 public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -70,17 +73,6 @@ public class Teacher {
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
-    }
-
-    @Basic
-    private boolean status;
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     @Basic
