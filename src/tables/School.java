@@ -5,7 +5,8 @@ import java.util.Collection;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "School.FindAll", query = "select s from School s")
+        @NamedQuery(name = "School.FindAll", query = "select s from School s"),
+        @NamedQuery(name = "School.FindByLogin", query = "select s from School s where s.login = :login and s.password = :password")
 })
 public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

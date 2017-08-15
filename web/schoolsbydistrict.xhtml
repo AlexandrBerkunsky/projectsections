@@ -12,7 +12,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton action="#{schoolBean.showadd}" value="Створити школу" ajax="false"/>
+            <p:commandButton action="#{schoolBean.showadd}" value="Створити школу" ajax="false" rendered="#{!schoolBean.edit and !schoolBean.schooladd}"/>
 
             <h:panelGroup rendered="#{!schoolBean.edit and schoolBean.schooladd}">
 

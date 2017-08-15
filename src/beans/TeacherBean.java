@@ -9,7 +9,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Named
@@ -57,6 +60,7 @@ public class TeacherBean implements Serializable {
     public void add() {
         teacherDAO.add(teacher);
         teacher = new Teacher();
+        teacheradd = false;
 
         util.redirectWithGet();
     }
@@ -75,9 +79,9 @@ public class TeacherBean implements Serializable {
     }
 
     public void editTeacher(Teacher teacher) {
+        teacheradd = false;
         this.teacher = teacher;
         edit = true;
-        teacheradd = false;
 
         util.redirectWithGet();
     }
@@ -88,5 +92,9 @@ public class TeacherBean implements Serializable {
         edit = false;
 
         util.redirectWithGet();
+    }
+
+    public Map<String, Integer> getTeachersMap(){
+        return teacherDAO.findAll().stream().collect(Collectors.toMap(Teacher::toString, Teacher::getId, (a, b) -> b, LinkedHashMap::new));
     }
 }

@@ -1,0 +1,27 @@
+package dao;
+
+import tables.Section;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+@Stateless
+public class SectionDAO {
+    @PersistenceContext
+    EntityManager em;
+
+    public List<Section> findAll() {
+        return em.createNamedQuery("Section.FindAll").getResultList();
+    }
+
+    public void save(Section section) {
+        em.merge(section);
+    }
+
+
+    public void add(Section section) {
+        em.persist(section);
+    }
+}

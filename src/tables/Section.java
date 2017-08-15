@@ -3,6 +3,9 @@ package tables;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Section.FindAll", query = "select s from Section s")
+})
 public class Section {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

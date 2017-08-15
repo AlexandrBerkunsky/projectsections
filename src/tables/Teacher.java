@@ -96,4 +96,9 @@ public class Teacher {
     public void setSections(Collection<Section> sections) {
         this.sections = sections;
     }
+
+    @Override
+    public String toString() {
+        return surname+" "+name.charAt(0)+"."+name2.charAt(0)+".";
+    }
 }

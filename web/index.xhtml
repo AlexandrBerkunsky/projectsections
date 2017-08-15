@@ -3,9 +3,22 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
    <f:view>
-      <h:outputLabel value="Hello, world"/>
+      <h:head>
+         <title>Початкова сторінка</title>
+      </h:head>
+      <h:body>
+         <h:outputText value="#{loginBean.message}" style="color:red"/>
+         <h:form>
+            <p:outputLabel value="Login:" for="login"/>
+            <p:inputText value="#{loginBean.login}" id="login"/>
+            <p:outputLabel value="Пароль:" for="password"/>
+            <p:password value="#{loginBean.password}" id="password"/>
+            <p:commandButton value="Війти" action="#{loginBean.check}" ajax="false"/>
+         </h:form>
+      </h:body>
    </f:view>
 </html>

@@ -36,4 +36,12 @@ public class SchoolDAO {
     public School find(int id) {
         return em.find(School.class, id);
     }
+
+    public School findByLogin(String login, String password) {
+        List<School> resultList = em.createNamedQuery("School.FindByLogin", School.class).setParameter("login", login).setParameter("password", password).getResultList();
+        if (!resultList.isEmpty()) {
+            return resultList.get(0);
+        } else
+        return null;
+    }
 }

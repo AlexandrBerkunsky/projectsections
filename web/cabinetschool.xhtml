@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>#{loginBean.school.shortname}</title>
+    </h:head>
+    <h:body>
+
+        <h1>
+            <h:outputText value="#{loginBean.school.name}"/>
+        </h1>
+        <h:form>
+            <p:commandButton action="#{sectionBean.showadd}" value="Додати гурток" ajax="false" rendered="#{!sectionBean.edit and !sectionBean.sectionadd}"/>
+
+            <h:panelGroup rendered="#{!sectionBean.edit and sectionBean.sectionadd}">
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Назва гуртка" for="namesection"/>
+                        <p:inputText value="#{sectionBean.section.name}" id="namesection" required="true"/>
+                        <p:outputLabel value="Кількість груп(число)" for="countgroupsection"/>
+                        <p:inputText value="#{sectionBean.section.countgroups}" id="countgroupsection" required="true"/>
+                        <p:outputLabel value="Кількість годин(число)" for="hourssection"/>
+                        <p:inputText value="#{sectionBean.section.hours}" id="hourssection" required="true"/>
+                        <p:outputLabel value="Кількість учнів(число)" for="studentssection"/>
+                        <p:inputText value="#{sectionBean.section.students}" id="studentssection" required="true"/>
+
+                        <p:commandButton action="#{sectionBean.add()}" value="Додати новий гурток" ajax="false"/>
+                        <p:commandButton action="#{sectionBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+                    </h:panelGrid>
+                </h:form>
+            </h:panelGroup>
+
+        <h:form>
+            <h:panelGroup rendered="#{not empty sectionBean.sections}">
+                <h:form>
+                    <p:dataTable var="section" value="#{sectionBean.sections}" resizableColumns="true">
+                        <p:column headerText="Назва">
+                            <h:outputText value="#{section.name}"/>
+                        </p:column>
+                        <p:column headerText="Кількість груп">
+                            <h:outputText value="#{section.countgroups}"/>
+                        </p:column>
+                        <p:column headerText="Кількість годин">
+                            <h:outputText value="#{section.hours}"/>
+                        </p:column>
+                        <p:column headerText="Кількість учнів">
+                            <h:outputText value="#{section.students}"/>
+                        </p:column>
+                        <p:column headerText="Профіль">
+                            <h:outputText value="#{section.profile.name}"/>
+                        </p:column>
+                        <p:column headerText="Учитель">
+                            <h:outputText value="#{section.teacher}"/>
+                        </p:column>
+                        <p:column headerText="Школа">
+                            <h:outputText value="#{section.school.shortname}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </h:panelGroup>
+        </h:form>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
