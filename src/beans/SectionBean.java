@@ -1,7 +1,12 @@
 package beans;
 
+import dao.ProfileDAO;
 import dao.SectionDAO;
+import dao.TeacherDAO;
+import tables.Profile;
+import tables.School;
 import tables.Section;
+import tables.Teacher;
 import utils.CommonUtils;
 
 import javax.ejb.EJB;
@@ -10,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Named
 @SessionScoped
@@ -17,11 +23,40 @@ public class SectionBean implements Serializable {
     @EJB
     SectionDAO sectionDAO;
 
+    @EJB
+    ProfileDAO profileDAO;
+
+    @EJB
+    TeacherDAO teacherDAO;
+
     @Inject
     CommonUtils util;
 
+    @Inject
+    LoginBean loginBean;
+
     private boolean edit = false;
     private boolean sectionadd = false;
+
+    private Teacher teacher;
+
+    private int profileId;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public int getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(int profileId) {
+        this.profileId = profileId;
+    }
 
     private Section section = new Section();
 
@@ -46,6 +81,12 @@ public class SectionBean implements Serializable {
     }
 
     public void add() {
+
+        Profile profile = profileDAO.find(profileId);
+        section.setProfile(profile);
+        section.setTeacher(teacher);
+        School school = loginBean.getSchool();
+        section.setSchool(school);
         sectionDAO.add(section);
         section = new Section();
         sectionadd = false;
@@ -66,5 +107,14 @@ public class SectionBean implements Serializable {
         edit = false;
 
         util.redirectWithGet();
+    }
+
+    public List<Teacher> completeTeacher(String query){
+        return teacherDAO.findAll()
+                .stream()
+                .filter(t->t.toString().contains(query))
+                .collect(Collectors.toList());
+
+
     }
 }

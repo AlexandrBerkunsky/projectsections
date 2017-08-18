@@ -41,4 +41,9 @@ public class Profile {
     public void setSections(Collection<Section> sections) {
         this.sections = sections;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

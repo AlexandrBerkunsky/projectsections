@@ -9,7 +9,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Named
 @SessionScoped
@@ -79,5 +82,9 @@ public class ProfileBean implements Serializable {
         edit = false;
 
         util.redirectWithGet();
+    }
+
+    public Map<String, Integer> getProfilesMap(){
+        return profileDAO.findAll().stream().collect(Collectors.toMap(Profile::toString, Profile::getId, (a, b) -> b, LinkedHashMap::new));
     }
 }

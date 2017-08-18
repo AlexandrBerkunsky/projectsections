@@ -31,9 +31,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JPA 2.0-2.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.172 - JSF" level="application_server_libraries" />
-    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.172" level="application_server_libraries" />
     <orderEntry type="library" name="PrimeFaces-5.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.172 - CDI: Contexts and Dependency Injection" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.173" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.173 - CDI: Contexts and Dependency Injection" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2.173 - JSF" level="application_server_libraries" />
   </component>
 </module>

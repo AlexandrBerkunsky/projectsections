@@ -29,7 +29,13 @@
                         <p:inputText value="#{sectionBean.section.hours}" id="hourssection" required="true"/>
                         <p:outputLabel value="Кількість учнів(число)" for="studentssection"/>
                         <p:inputText value="#{sectionBean.section.students}" id="studentssection" required="true"/>
-
+                        <p:outputLabel value="Профіль" for="profilessection"/>
+                        <p:selectOneMenu id="profilessection" value="#{sectionBean.profileId}" effect="fold">
+                            <f:selectItems value="#{profileBean.profilesMap}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Вчитель" for="teacherssection"/>
+                        <p:autoComplete id="teacherssection" dropdown="true" value="#{sectionBean.teacher}" completeMethod="#{sectionBean.completeTeacher}"
+                                        var="teacher" itemLabel="#{teacher}" itemValue="#{teacher}" converter="#{teacherConverter}" forceSelection="true" />
                         <p:commandButton action="#{sectionBean.add()}" value="Додати новий гурток" ajax="false"/>
                         <p:commandButton action="#{sectionBean.cancelEdit()}" value="Скасувати" ajax="false"/>
                     </h:panelGrid>
