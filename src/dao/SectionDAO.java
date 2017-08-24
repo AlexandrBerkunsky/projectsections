@@ -30,7 +30,4 @@ public class SectionDAO {
         em.remove(section);
     }
 
-    public Section find(int id) {
-        return em.find(Section.class, id);
-    }
 }

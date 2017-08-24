@@ -1,12 +1,10 @@
 package beans;
 
+import dao.DistrictDAO;
 import dao.ProfileDAO;
 import dao.SectionDAO;
 import dao.TeacherDAO;
-import tables.Profile;
-import tables.School;
-import tables.Section;
-import tables.Teacher;
+import tables.*;
 import utils.CommonUtils;
 
 import javax.ejb.EJB;
@@ -14,7 +12,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Named
@@ -28,6 +28,9 @@ public class SectionBean implements Serializable {
 
     @EJB
     TeacherDAO teacherDAO;
+
+    @EJB
+    DistrictDAO distictDAO;
 
     @Inject
     CommonUtils util;
@@ -143,6 +146,7 @@ public class SectionBean implements Serializable {
 
         util.redirectWithGet();
     }
+
 
 
     public List<Teacher> completeTeacher(String query){

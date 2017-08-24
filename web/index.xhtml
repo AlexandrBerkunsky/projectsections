@@ -26,10 +26,20 @@
                <p:column filterBy="#{sections.name}" filterMatchMode="contains" headerText="Назва гуртка" >
                   <h:outputText value="#{sections.name}"/>
                </p:column>
-               <p:column filterBy="#{sections.profile.name}" filterMatchMode="contains" headerText="Профіль">
+               <p:column filterBy="#{sections.profile.name}" filterMatchMode="in" headerText="Профіль">
+                  <f:facet name="filter">
+                     <p:selectCheckboxMenu label="Профілі" onchange="PF('sectionsTable').filter()" panelStyle="width: 200px;" scrollHeight="160">
+                        <f:selectItems value="#{profileBean.profiles}"/>
+                     </p:selectCheckboxMenu>
+                  </f:facet>
                   <h:outputText value="#{sections.profile.name}"/>
                </p:column>
-               <p:column filterBy="#{sections.school.district.name}" filterMatchMode="contains" headerText="Район">
+               <p:column filterBy="#{sections.school.district.name}" filterMatchMode="in" headerText="Район">
+                  <f:facet name="filter">
+                     <p:selectCheckboxMenu label="Райони" onchange="PF('sectionsTable').filter()" panelStyle="width: 175px;" scrollHeight="120">
+                        <f:selectItems value="#{districtBean.districts}"/>
+                     </p:selectCheckboxMenu>
+                  </f:facet>
                   <h:outputText value="#{sections.school.district.name}"/>
                </p:column>
                <p:column filterBy="#{sections.school.name}" filterMatchMode="contains" headerText="Школа">

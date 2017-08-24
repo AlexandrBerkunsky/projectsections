@@ -42,4 +42,9 @@ public class District {
     public void setSchools(Collection<School> schools) {
         this.schools = schools;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -41,6 +41,8 @@ public class DistrictBean implements Serializable {
         return districtDAO.findAll();
     }
 
+
+
     public void delete(int id) {
         districtDAO.delete(id);
 
