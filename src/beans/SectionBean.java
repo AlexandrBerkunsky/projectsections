@@ -35,12 +35,24 @@ public class SectionBean implements Serializable {
     @Inject
     LoginBean loginBean;
 
+
+
     private boolean edit = false;
     private boolean sectionadd = false;
 
     private Teacher teacher;
 
     private int profileId;
+
+    private List<Section> filteredSections;
+
+    public List<Section> getFilteredSections() {
+        return filteredSections;
+    }
+
+    public void setFilteredSections(List<Section> filteredSections) {
+        this.filteredSections = filteredSections;
+    }
 
     public Teacher getTeacher() {
         return teacher;
@@ -131,6 +143,7 @@ public class SectionBean implements Serializable {
 
         util.redirectWithGet();
     }
+
 
     public List<Teacher> completeTeacher(String query){
         return teacherDAO.findAll()

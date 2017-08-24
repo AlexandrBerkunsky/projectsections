@@ -19,6 +19,28 @@
             <p:password value="#{loginBean.password}" id="password"/>
             <p:commandButton value="Війти" action="#{loginBean.check}" ajax="false"/>
          </h:form>
+
+         <h:form>
+            <p:dataTable var="sections" value="#{sectionBean.sections}" resizableColumns="true" widgetVar="sectionsTable"
+                         emptyMessage="За цим запитом не знайдено жодного гуртка." filteredValue="#{sectionBean.filteredSections}">
+               <p:column filterBy="#{sections.name}" filterMatchMode="contains" headerText="Назва гуртка" >
+                  <h:outputText value="#{sections.name}"/>
+               </p:column>
+               <p:column filterBy="#{sections.profile.name}" filterMatchMode="contains" headerText="Профіль">
+                  <h:outputText value="#{sections.profile.name}"/>
+               </p:column>
+               <p:column filterBy="#{sections.school.district.name}" filterMatchMode="contains" headerText="Район">
+                  <h:outputText value="#{sections.school.district.name}"/>
+               </p:column>
+               <p:column filterBy="#{sections.school.name}" filterMatchMode="contains" headerText="Школа">
+                  <h:outputText value="#{sections.school.name}"/>
+               </p:column>
+               <p:column filterBy="#{sections.teacher}" filterMatchMode="contains" headerText="Учитель">
+                  <h:outputText value="#{sections.teacher}"/>
+               </p:column>
+
+            </p:dataTable>
+         </h:form>
       </h:body>
    </f:view>
 </html>
