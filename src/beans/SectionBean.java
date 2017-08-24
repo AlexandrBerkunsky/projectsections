@@ -94,6 +94,15 @@ public class SectionBean implements Serializable {
         util.redirectWithGet();
     }
 
+    public void saveEdit() {
+        sectionDAO.save(section);
+        this.section = new Section();
+        edit = false;
+        sectionadd = false;
+
+        util.redirectWithGet();
+    }
+
     public void cancelEdit() {
         this.section = new Section();
         edit = false;
@@ -105,6 +114,20 @@ public class SectionBean implements Serializable {
     public void showadd() {
         sectionadd = true;
         edit = false;
+
+        util.redirectWithGet();
+    }
+
+    public void editSection(Section section) {
+        this.section = section;
+        edit = true;
+        sectionadd = false;
+
+        util.redirectWithGet();
+    }
+
+    public void delete(int id) {
+        sectionDAO.delete(id);
 
         util.redirectWithGet();
     }

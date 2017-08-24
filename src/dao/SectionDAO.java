@@ -24,4 +24,13 @@ public class SectionDAO {
     public void add(Section section) {
         em.persist(section);
     }
+
+    public void delete(int id) {
+        Section section = em.find(Section.class, id);
+        em.remove(section);
+    }
+
+    public Section find(int id) {
+        return em.find(Section.class, id);
+    }
 }

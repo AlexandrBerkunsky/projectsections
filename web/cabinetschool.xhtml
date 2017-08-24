@@ -42,6 +42,30 @@
                 </h:form>
             </h:panelGroup>
 
+            <h:panelGroup rendered="#{sectionBean.edit and !sectionBean.sectionadd}">
+                <h:form>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Назва гуртка" for="editnamesection"/>
+                        <p:inputText value="#{sectionBean.section.name}" id="editnamesection" required="true"/>
+                        <p:outputLabel value="Кількість груп(число)" for="editcountgroupsection"/>
+                        <p:inputText value="#{sectionBean.section.countgroups}" id="editcountgroupsection" required="true"/>
+                        <p:outputLabel value="Кількість годин(число)" for="edithourssection"/>
+                        <p:inputText value="#{sectionBean.section.hours}" id="edithourssection" required="true"/>
+                        <p:outputLabel value="Кількість учнів(число)" for="editstudentssection"/>
+                        <p:inputText value="#{sectionBean.section.students}" id="editstudentssection" required="true"/>
+                        <p:outputLabel value="Профіль" for="editprofilessection"/>
+                        <p:selectOneMenu id="editprofilessection" value="#{sectionBean.profileId}" effect="fold">
+                            <f:selectItems value="#{profileBean.profilesMap}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Вчитель" for="editteacherssection"/>
+                        <p:autoComplete id="editteacherssection" dropdown="true" value="#{sectionBean.teacher}" completeMethod="#{sectionBean.completeTeacher}"
+                                        var="teacher" itemLabel="#{teacher}" itemValue="#{teacher}" converter="#{teacherConverter}" forceSelection="true" />
+                        <p:commandButton action="#{sectionBean.saveEdit}" icon="ui-icon-check" value="Зберегти" ajax="false"/>
+                        <p:commandButton action="#{sectionBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати" ajax="false"/>
+                    </h:panelGrid>
+                </h:form>
+            </h:panelGroup>
+
         <h:form>
             <h:panelGroup rendered="#{not empty sectionBean.sections}">
                 <h:form>
@@ -67,7 +91,22 @@
                         <p:column headerText="Школа">
                             <h:outputText value="#{section.school.shortname}"/>
                         </p:column>
+                        <p:column headerText="Правка" style="width: 75px; text-align: center">
+                            <p:commandButton actionListener="#{sectionBean.editSection(section)}" icon="ui-icon-pencil"/>
+                        </p:column>
+                        <p:column headerText="Видалення" style="width: 75px; text-align: center">
+                            <p:commandButton actionListener="#{sectionBean.delete(section.id)}" icon="ui-icon-trash">
+                                <p:confirm header="Підтвердження видалення" message="Вы впевнені?" icon="ui-icon-alert"/>
+                            </p:commandButton>
+                        </p:column>
                     </p:dataTable>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+
+
                 </h:form>
             </h:panelGroup>
         </h:form>
