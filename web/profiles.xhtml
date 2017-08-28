@@ -14,24 +14,24 @@
 
 
             <h:panelGroup rendered="#{!profileBean.edit}">
-                <h:form>
+                <h:form id="addprofile">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Назва профіля" for="profilename"/>
-                    <p:inputText value="#{profileBean.profile.name}" id="profilename" required="true"/>
+                    <p:inputText value="#{profileBean.profile.name}" id="profilename" required="#{not empty param['addprofile:addbutton']}"/>
 
-                    <p:commandButton action="#{profileBean.add()}" value="Створити новий" ajax="false"/>
+                    <p:commandButton id="addbutton" action="#{profileBean.add()}" value="Створити новий" update="@all"/>
                 </h:panelGrid>
                 </h:form>
             </h:panelGroup>
 
             <h:panelGroup rendered="#{profileBean.edit}">
-                <h:form>
+                <h:form id="editprofile">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Назва профіля" for="profilenameedit"/>
-                    <p:inputText value="#{profileBean.profile.name}" id="profilenameedit" required="true"/>
+                    <p:inputText value="#{profileBean.profile.name}" id="profilenameedit" required="#{not empty param['editprofile:save']}"/>
 
-                    <p:commandButton action="#{profileBean.saveEdit()}" icon="ui-icon-check" value="Зберегти" ajax="false"/>
-                    <p:commandButton action="#{profileBean.cancelEdit()}" icon="ui-icon-cancel" value="Скасувати" ajax="false"/>
+                    <p:commandButton id="save" action="#{profileBean.saveEdit()}" icon="ui-icon-check" value="Зберегти" update="@all"/>
+                    <p:commandButton id="cancel" action="#{profileBean.cancelEdit()}" icon="ui-icon-cancel" value="Скасувати" update="@all"/>
                 </h:panelGrid>
                 </h:form>
             </h:panelGroup>

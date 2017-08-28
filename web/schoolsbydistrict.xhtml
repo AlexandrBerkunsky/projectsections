@@ -11,73 +11,78 @@
         <title>#{districtBean.district.name} район</title>
     </h:head>
     <h:body>
-        <h:form>
-            <p:commandButton action="#{schoolBean.showadd}" value="Створити школу" ajax="false" rendered="#{!schoolBean.edit and !schoolBean.schooladd}"/>
+            <h:form>
+                <p:commandButton action="#{schoolBean.showadd}" value="Створити школу" ajax="false" rendered="#{!schoolBean.edit and !schoolBean.schooladd}"/>
+            </h:form>
 
+
+            <h:form id="addform">
             <h:panelGroup rendered="#{!schoolBean.edit and schoolBean.schooladd}">
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Коротка назва школи" for="shortnameschool"/>
-                    <p:inputText value="#{schoolBean.school.shortname}" id="shortnameschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.shortname}" id="shortnameschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Телефон" for="phoneschool"/>
-                    <p:inputText value="#{schoolBean.school.phone}" id="phoneschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.phone}" id="phoneschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Електронна пошта" for="mailschool"/>
-                    <p:inputText value="#{schoolBean.school.email}" id="mailschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.email}" id="mailschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="ПІБ Директора" for="directorschool"/>
-                    <p:inputText value="#{schoolBean.school.director}" id="directorschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.director}" id="directorschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Адреса школи" for="addressschool"/>
-                    <p:inputText value="#{schoolBean.school.address}" id="addressschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.address}" id="addressschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschool"/>
-                    <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="ЄДРПОУ" for="edrpouschool"/>
-                    <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Назва школи" for="nameschool"/>
-                    <p:inputText value="#{schoolBean.school.name}" id="nameschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.name}" id="nameschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Повна назва школи" for="fullnameschool"/>
-                    <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Login школи" for="loginschool"/>
-                    <p:inputText value="#{schoolBean.school.login}" id="loginschool" required="true"/>
+                    <p:inputText value="#{schoolBean.school.login}" id="loginschool" required="#{not empty param['addform:addbutton']}"/>
                     <p:outputLabel value="Пароль школи" for="passwordschool"/>
-                    <p:inputText value="#{schoolBean.school.password}" id="passwordschool" required="true"/>
-                    <p:commandButton action="#{schoolBean.add(districtBean)}" value="Створити нову" ajax="false"/>
-                    <p:commandButton action="#{schoolBean.cancelEdit()}" value="Скасувати" ajax="false"/>
+                    <p:inputText value="#{schoolBean.school.password}" id="passwordschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:commandButton id="addbutton" action="#{schoolBean.add(districtBean)}" value="Створити нову" update="@all"/>
+                    <p:commandButton id="canceladdbutton" action="#{schoolBean.cancelEdit()}" value="Скасувати" update="@all"/>
                 </h:panelGrid>
-
             </h:panelGroup>
+            </h:form>
 
             <h:panelGroup rendered="#{schoolBean.edit and !schoolBean.schooladd}">
-                <h:form>
+                <h:form id="editschool">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Коротка назва школи" for="shortnameedit"/>
-                        <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Телефон" for="phoneschooledit"/>
-                        <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Електронна пошта" for="mailschooledit"/>
-                        <p:inputText value="#{schoolBean.school.email}" id="mailschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.email}" id="mailschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="ПІБ Директора" for="directorschooledit"/>
-                        <p:inputText value="#{schoolBean.school.director}" id="directorschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.director}" id="directorschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Адреса школи" for="addressschooledit"/>
-                        <p:inputText value="#{schoolBean.school.address}" id="addressschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.address}" id="addressschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschooledit"/>
-                        <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="ЄДРПОУ" for="edrpouschooledit"/>
-                        <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Назва школи" for="nameschooledit"/>
-                        <p:inputText value="#{schoolBean.school.name}" id="nameschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.name}" id="nameschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Повна назва школи" for="fullnameschooledit"/>
-                        <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Login школи" for="loginschooledit"/>
-                        <p:inputText value="#{schoolBean.school.login}" id="loginschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.login}" id="loginschooledit" required="#{not empty param['editschool:saveedit']}"/>
                         <p:outputLabel value="Пароль школи" for="passwordschooledit"/>
-                        <p:inputText value="#{schoolBean.school.password}" id="passwordschooledit" required="true"/>
+                        <p:inputText value="#{schoolBean.school.password}" id="passwordschooledit" required="#{not empty param['editschool:saveedit']}"/>
                     </h:panelGrid>
-                    <p:commandButton action="#{schoolBean.saveEdit}" icon="ui-icon-check" value="Зберегти"
-                                     ajax="false"/>
-                    <p:commandButton action="#{schoolBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати"
-                                     ajax="false"/>
+                    <p:commandButton id="saveedit" action="#{schoolBean.saveEdit}" icon="ui-icon-check" value="Зберегти"
+                                     update="@all"/>
+                    <p:commandButton id="cancel" action="#{schoolBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати"
+                                     update="@all"/>
                 </h:form>
             </h:panelGroup>
 
+
+        <h:form>
             <p:dataTable var="school" value="#{districtBean.district.schools}" id="schools">
                 <p:column headerText="Школа">
                     <h:outputText value="#{school.shortname}"/>
@@ -105,8 +110,8 @@
                 <p:commandButton value="Так" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                 <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
             </p:confirmDialog>
-
         </h:form>
+
     </h:body>
 </f:view>
 </html>

@@ -52,13 +52,13 @@
     </h:panelGroup>
 
     <h:panelGroup rendered="#{districtBean.edit}">
-        <h:form>
+        <h:form id="editdistrict">
             <h:panelGrid columns="3" cellpadding="5">
                 <p:outputLabel value="Район" for="nameedit"/>
-                <p:inputText value="#{districtBean.district.name}" id="nameedit" required="true"/>
+                <p:inputText value="#{districtBean.district.name}" id="nameedit" required="#{not empty param['editdistrict:save']}"/>
             </h:panelGrid>
-            <p:commandButton action="#{districtBean.saveEdit}" icon="ui-icon-check" value="Зберегти" ajax="false"/>
-            <p:commandButton action="#{districtBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати" ajax="false"/>
+            <p:commandButton id="save" action="#{districtBean.saveEdit}" icon="ui-icon-check" value="Зберегти" update="@all"/>
+            <p:commandButton id="cancel" action="#{districtBean.cancelEdit}" icon="ui-icon-cancel" value="Скасувати" update="@all"/>
         </h:form>
     </h:panelGroup>
 </h:body>

@@ -68,6 +68,7 @@ public class TeacherBean implements Serializable {
     public void cancelEdit() {
         this.teacher = new Teacher();
         edit = false;
+        teacheradd = false;
 
         util.redirectWithGet();
     }
