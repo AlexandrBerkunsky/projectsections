@@ -89,6 +89,7 @@ public class SchoolBean implements Serializable {
 
     public void editSchool(School school) {
         this.school = school;
+        schooladd = false;
         edit = true;
 
         util.redirectWithGet();

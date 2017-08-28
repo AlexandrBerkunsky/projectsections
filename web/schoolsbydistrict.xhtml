@@ -21,27 +21,28 @@
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Коротка назва школи" for="shortnameschool"/>
-                    <p:inputText value="#{schoolBean.school.shortname}" id="shortnameschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.shortname}" id="shortnameschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. ЗОШ №1"/>
                     <p:outputLabel value="Телефон" for="phoneschool"/>
-                    <p:inputText value="#{schoolBean.school.phone}" id="phoneschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputMask value="#{schoolBean.school.phone}" id="phoneschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. (0512)12-34-56" mask="(0512)99-99-99"/>
+
                     <p:outputLabel value="Електронна пошта" for="mailschool"/>
-                    <p:inputText value="#{schoolBean.school.email}" id="mailschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.email}" id="mailschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. qwerty@gmail.com"/>
                     <p:outputLabel value="ПІБ Директора" for="directorschool"/>
-                    <p:inputText value="#{schoolBean.school.director}" id="directorschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.director}" id="directorschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. Іванов А.А."/>
                     <p:outputLabel value="Адреса школи" for="addressschool"/>
-                    <p:inputText value="#{schoolBean.school.address}" id="addressschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.address}" id="addressschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. вулиця Пушкінська 5"/>
                     <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschool"/>
-                    <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. 21"/>
                     <p:outputLabel value="ЄДРПОУ" for="edrpouschool"/>
-                    <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. 23671631"/>
                     <p:outputLabel value="Назва школи" for="nameschool"/>
-                    <p:inputText value="#{schoolBean.school.name}" id="nameschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.name}" id="nameschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. Миколаївська загальноосвітня школа І-ІІІ ступенів № 1"/>
                     <p:outputLabel value="Повна назва школи" for="fullnameschool"/>
-                    <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" placeholder="прик. загальноосвітня школа І - ІІІ ступенів № 1 Миколаївської міської ради Миколаївської області"/>
                     <p:outputLabel value="Login школи" for="loginschool"/>
-                    <p:inputText value="#{schoolBean.school.login}" id="loginschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.login}" id="loginschool" required="#{not empty param['addform:addbutton']}" style="width: 500px"/>
                     <p:outputLabel value="Пароль школи" for="passwordschool"/>
-                    <p:inputText value="#{schoolBean.school.password}" id="passwordschool" required="#{not empty param['addform:addbutton']}"/>
+                    <p:inputText value="#{schoolBean.school.password}" id="passwordschool" required="#{not empty param['addform:addbutton']}" style="width: 500px" />
                     <p:commandButton id="addbutton" action="#{schoolBean.add(districtBean)}" value="Створити нову" update="@all"/>
                     <p:commandButton id="canceladdbutton" action="#{schoolBean.cancelEdit()}" value="Скасувати" update="@all"/>
                 </h:panelGrid>
@@ -52,25 +53,25 @@
                 <h:form id="editschool">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Коротка назва школи" for="shortnameedit"/>
-                        <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.shortname}" id="shortnameedit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. ЗОШ №1"/>
                         <p:outputLabel value="Телефон" for="phoneschooledit"/>
-                        <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.phone}" id="phoneschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. (0512)12-34-56"/>
                         <p:outputLabel value="Електронна пошта" for="mailschooledit"/>
-                        <p:inputText value="#{schoolBean.school.email}" id="mailschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.email}" id="mailschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. qwerty@gmail.com"/>
                         <p:outputLabel value="ПІБ Директора" for="directorschooledit"/>
-                        <p:inputText value="#{schoolBean.school.director}" id="directorschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.director}" id="directorschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. Іванов А.А."/>
                         <p:outputLabel value="Адреса школи" for="addressschooledit"/>
-                        <p:inputText value="#{schoolBean.school.address}" id="addressschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.address}" id="addressschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. вулиця Пушкінська 5"/>
                         <p:outputLabel value="Кількість кабінетів (число)" for="ccabinetsschooledit"/>
-                        <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.countcabinets}" id="ccabinetsschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. 21"/>
                         <p:outputLabel value="ЄДРПОУ" for="edrpouschooledit"/>
-                        <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.edrpou}" id="edrpouschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. 23671631"/>
                         <p:outputLabel value="Назва школи" for="nameschooledit"/>
-                        <p:inputText value="#{schoolBean.school.name}" id="nameschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.name}" id="nameschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. Миколаївська загальноосвітня школа І-ІІІ ступенів № 1"/>
                         <p:outputLabel value="Повна назва школи" for="fullnameschooledit"/>
-                        <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.fullname}" id="fullnameschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px" placeholder="прик. загальноосвітня школа І - ІІІ ступенів № 1 Миколаївської міської ради Миколаївської області" />
                         <p:outputLabel value="Login школи" for="loginschooledit"/>
-                        <p:inputText value="#{schoolBean.school.login}" id="loginschooledit" required="#{not empty param['editschool:saveedit']}"/>
+                        <p:inputText value="#{schoolBean.school.login}" id="loginschooledit" required="#{not empty param['editschool:saveedit']}" style="width: 500px"/>
                         <p:outputLabel value="Пароль школи" for="passwordschooledit"/>
                         <p:inputText value="#{schoolBean.school.password}" id="passwordschooledit" required="#{not empty param['editschool:saveedit']}"/>
                     </h:panelGrid>

@@ -59,4 +59,9 @@ public class LoginBean implements Serializable {
             return null;
         }
     }
+
+    public String getSchoolNameUpperCase() {
+        String schoolName = school.getName();
+        return schoolName.toUpperCase();
+    }
 }

@@ -15,8 +15,16 @@
         <h1>
             <h:outputText value="#{loginBean.school.name}"/>
         </h1>
+
+
+
+
+
         <h:form>
-            <p:commandButton action="#{sectionBean.showadd}" value="Додати гурток" ajax="false" rendered="#{!sectionBean.edit and !sectionBean.sectionadd}"/>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:commandButton action="#{sectionBean.showadd}" value="Додати гурток" ajax="false" rendered="#{!sectionBean.edit and !sectionBean.sectionadd}"/>
+                <p:commandButton action="schoolprint1.xhtml" value="Роздрукувати звіт №1"/>
+            </h:panelGrid>
         </h:form>
 
 
