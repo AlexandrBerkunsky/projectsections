@@ -53,7 +53,7 @@
 
         <h:panelGroup rendered="#{not empty loginBean.school.sections}">
             <h:form>
-                <p:dataTable var="line" value="#{loginBean.reportProfilesBySchoolLines}" resizableColumns="true">
+                <p:dataTable var="line" value="#{loginBean.reportProfilesBySchoolLines}" resizableColumns="true" rowStyleClass="mystyle">
                     <p:column headerText="№" style="width: 30px">
                         <h:outputText value="#{line.count}"/>
                     </p:column>
