@@ -31,7 +31,7 @@
                 </tr>
                 <tr align="left"><td>
                     <br />&nbsp; &nbsp; &nbsp; ______________ № ______
-                    <br />&nbsp; &nbsp; &nbsp; Про функціонування гуртків по  (школа)
+                    <br />&nbsp; &nbsp; &nbsp; Про функціонування гуртків по #{loginBean.school.shortname}
                 </td></tr>
                 <tr align="right"><td>
                     Начальнику управління освіти &nbsp; &nbsp; &nbsp;
@@ -50,71 +50,93 @@
             </table>
         <!--</p:dataTable>-->
 
-        <table border="1" align="center" width="90%">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+
+        <h:panelGroup rendered="#{not empty loginBean.school.sections}">
+            <h:form>
+                <p:dataTable var="line" value="#{loginBean.reportProfilesBySchoolLines}" resizableColumns="true">
+                    <p:column headerText="№" style="width: 30px">
+                        <h:outputText value="#{line.count}"/>
+                    </p:column>
+                    <p:column headerText="Профіль гуртка" style="text-align: center">
+                        <h:outputText value="#{line.profile}"/>
+                    </p:column>
+                    <p:column headerText="Кількість гуртків" style="text-align: center">
+                        <h:outputText value="#{line.countSections}"/>
+                    </p:column>
+                    <p:column headerText="Кількість годин" style="text-align: center">
+                        <h:outputText value="#{line.countHours}"/>
+                    </p:column>
+                    <p:column headerText="Кількість вихованців" style="text-align: center">
+                        <h:outputText value="#{line.countStudents}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </h:panelGroup>
+        <!--<table border="1" align="center" width="90%">-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+        <!--</table>-->
     </h:body>
 </f:view>
 </html>
