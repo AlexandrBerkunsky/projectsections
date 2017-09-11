@@ -1,6 +1,5 @@
 .white{
     background-color:white;
 }
-.noprint{
-    display: none;
-}
+
+@media print {.noPrint { display: none; }}
