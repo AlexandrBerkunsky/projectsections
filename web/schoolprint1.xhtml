@@ -9,6 +9,8 @@
 <f:view>
     <h:head>
         <title>Печать1</title>
+
+        <!--<base target="_blank"/>-->
         <h:outputStylesheet library="css" name="print.css"/>
     </h:head>
     <h:body>
@@ -73,6 +75,8 @@
                 </p:dataTable>
             </h:form>
         </h:panelGroup>
+
+        <p:commandButton id="print" value="Роздрукувати" onclick="window.print()"/>
         <!--<table border="1" align="center" width="90%">-->
             <!--<tr>-->
                 <!--<td></td>-->
