@@ -9,6 +9,7 @@
 <f:view>
     <h:head>
         <title>Печать1</title>
+        <h:outputStylesheet library="css" name="print.css"/>
     </h:head>
     <h:body>
         <!--<p:dataTable var="schoolprint">-->
@@ -53,7 +54,7 @@
 
         <h:panelGroup rendered="#{not empty loginBean.school.sections}">
             <h:form>
-                <p:dataTable var="line" value="#{loginBean.reportProfilesBySchoolLines}" resizableColumns="true" rowStyleClass="mystyle">
+                <p:dataTable var="line" value="#{loginBean.reportProfilesBySchoolLines}" resizableColumns="true" rowStyleClass="white">
                     <p:column headerText="№" style="width: 30px">
                         <h:outputText value="#{line.count}"/>
                     </p:column>
