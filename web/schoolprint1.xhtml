@@ -12,6 +12,9 @@
 
         <!--<base target="_blank"/>-->
         <h:outputStylesheet library="css" name="print.css"/>
+        <style type="text/css"> @media print {.noPrint { display: none; }} table { background: white; }
+        @page {size: landscape}
+        </style>
     </h:head>
     <h:body>
         <!--<p:dataTable var="schoolprint">-->
@@ -76,7 +79,7 @@
             </h:form>
         </h:panelGroup>
 
-        <p:commandButton id="print" value="Роздрукувати" onclick="window.print()" styleClass="noPrint"/>
+        <p:commandButton id="print" value="Роздрукувати" onclick="javascript:window.print()" styleClass="noPrint"/>
         <!--<table border="1" align="center" width="90%">-->
             <!--<tr>-->
                 <!--<td></td>-->
